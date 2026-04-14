@@ -103,8 +103,19 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      object-fit: cover;
+      overflow: hidden;
       z-index: 0;
+      animation: bgSlide 20s infinite;
+      background-size: cover;
+      background-position: center;
+    }
+
+    @keyframes bgSlide {
+      0%   { background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80'); }
+      25%  { background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80'); }
+      50%  { background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80'); }
+      75%  { background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80'); }
+      100% { background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80'); }
     }
 
     .hero-overlay {
@@ -840,6 +851,13 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Fix for mobile - show all content if JS scroll fails */
+    @media (max-width: 900px) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
 
     /* ========== HAMBURGER ========== */
     .hamburger {
@@ -887,7 +905,6 @@
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#integrity">Our Values</a></li>
-    <li><a href="#interior">Interiors</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#partners">Partners</a></li>
     <li><a href="#contact" class="nav-cta">Contact Us</a></li>
@@ -897,19 +914,9 @@
   </div>
 </nav>
 
-<!-- ========== HERO – FREE VIDEO ========== -->
+<!-- ========== HERO ========== -->
 <section id="hero">
-  <!-- Free Pexels embed video: Real estate team meeting / office discussion -->
-  <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80">
-    <!-- Aerial luxury residential building drone footage -->
-    <source src="https://videos.pexels.com/video-files/15283457/15283457-uhd_2560_1440_24fps.mp4" type="video/mp4">
-    <!-- Aerial real estate development site -->
-    <source src="https://videos.pexels.com/video-files/29983411/29983411-hd_1920_1080_30fps.mp4" type="video/mp4">
-    <!-- Modern apartment building aerial -->
-    <source src="https://videos.pexels.com/video-files/3051983/3051983-hd_1920_1080_25fps.mp4" type="video/mp4">
-    <!-- Luxury building exterior fallback -->
-    <source src="https://videos.pexels.com/video-files/2169880/2169880-hd_1920_1080_25fps.mp4" type="video/mp4">
-  </video>
+  <div class="hero-video" id="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-tag">Ekam Realty Pvt. Ltd.</div>
@@ -1128,52 +1135,6 @@
   </div>
 </section>
 
-<!-- ========== INTERIOR SOLUTION ========== -->
-<section id="interior" style="background:var(--dark);padding:100px 60px;">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;" class="reveal">
-    <div>
-      <div class="section-tag">Our Services</div>
-      <h2 class="section-title">Premium <em>Interior</em> Solutions</h2>
-      <div class="section-line"></div>
-      <p style="color:rgba(248,245,240,0.75);line-height:1.9;margin-bottom:18px;font-weight:300;font-size:1rem;">
-        At Ekam Realty, we go beyond just finding your dream property — we help you transform it into a home. Our Interior Solution service connects you with expert designers and skilled craftsmen to create spaces that truly reflect your personality and lifestyle.
-      </p>
-      <p style="color:rgba(248,245,240,0.75);line-height:1.9;margin-bottom:30px;font-weight:300;font-size:1rem;">
-        From concept to completion, we manage your entire interior journey — saving you time, cost, and stress.
-      </p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:30px;">
-        <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);padding:18px;border-radius:2px;">
-          <div style="font-size:1.4rem;margin-bottom:8px;">🛋️</div>
-          <div style="font-size:0.85rem;font-weight:600;margin-bottom:4px;">Furniture & Décor</div>
-          <div style="font-size:0.78rem;color:var(--gray);">Curated premium furniture & styling</div>
-        </div>
-        <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);padding:18px;border-radius:2px;">
-          <div style="font-size:1.4rem;margin-bottom:8px;">🏗️</div>
-          <div style="font-size:0.85rem;font-weight:600;margin-bottom:4px;">Modular Kitchens</div>
-          <div style="font-size:0.78rem;color:var(--gray);">Modern, functional kitchen design</div>
-        </div>
-        <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);padding:18px;border-radius:2px;">
-          <div style="font-size:1.4rem;margin-bottom:8px;">💡</div>
-          <div style="font-size:0.85rem;font-weight:600;margin-bottom:4px;">Lighting Design</div>
-          <div style="font-size:0.78rem;color:var(--gray);">Ambient & accent lighting solutions</div>
-        </div>
-        <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);padding:18px;border-radius:2px;">
-          <div style="font-size:1.4rem;margin-bottom:8px;">🎨</div>
-          <div style="font-size:0.85rem;font-weight:600;margin-bottom:4px;">Full Home Design</div>
-          <div style="font-size:0.78rem;color:var(--gray);">End-to-end interior project management</div>
-        </div>
-      </div>
-      <a href="#contact" class="btn-primary">Get Interior Consultation</a>
-    </div>
-    <div style="position:relative;">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80" alt="Interior Solutions" style="width:100%;height:500px;object-fit:cover;border-radius:2px;filter:brightness(0.9);">
-      <div style="position:absolute;bottom:-20px;right:-20px;background:var(--gold);color:var(--dark);padding:24px 28px;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;line-height:1.4;">
-        Design to<br>Delivery<br>Guaranteed
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ========== PARTNERS ========== -->
 <section id="partners" class="reveal">
   <div class="section-tag">Our Partners</div>
@@ -1185,7 +1146,7 @@
 
   <div class="partners-logos">
     <div class="partner-logo">
-      <img src="IMG-20260222-WA0013_1_.jpg" alt="Acala Group">
+      <img src="acala-logo.jpg" alt="Acala Group">
     </div>
     <div class="partner-logo">
       <img src="moneykarma-logo.jpg" alt="MoneyKarma - Intelligent Finance">
